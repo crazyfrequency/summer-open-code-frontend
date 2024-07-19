@@ -14,6 +14,6 @@ export const DEFAULT_TOASTER = {
 };
 
 export const SITE_NAME = 'Админ панель';
-export const SITE_DOMAIN_API = 'http://localhost:8080/api';
+export const SITE_DOMAIN_API = process.env.NEXT_PUBLIC_API ?? 'http://localhost:8080/api';
 export const SITE_DOMAIN_COOKIES = 'localhost';
 export const COOKIES_ACCESS_TOKEN = 'accessToken';

@@ -1,4 +1,4 @@
-import { CreationReason, InfoTypeCode, ParticipantStatus } from "./enums";
+import { ChangeType, CreationReason, InfoTypeCode, ParticipantStatus } from "./enums";
 import { IBase } from "./root.types";
 
 export interface IImportData extends IBase {
@@ -12,9 +12,32 @@ export interface IImportData extends IBase {
 	infoTypeCode: InfoTypeCode
 	businessDay: string
 	directoryVersion: number
-	partInfoList: number[]
-	initialEDList: number[]
+	partInfo: IPartInfo
+	initialED: IInitialED
 	bicDirectoryEntryList: number[]
+}
+
+export interface IPartInfo extends IBase {
+	partNo: number
+	partQuantity: number
+	partAggregateId: String
+	importData: number
+}
+
+export interface IInitialED extends IBase {
+	edno: number
+	edDate: string
+	edAuthor: number
+	importData: number
+}
+
+export interface IBicDirectoryEntry extends IBase {
+	bic: number
+	changeType: ChangeType
+	importData: number
+	participantInfo: IParticipantInfo
+	swbics: number[]
+	accountsList: number[]
 }
 
 export interface IParticipantInfo extends IBase {
@@ -28,12 +51,13 @@ export interface IParticipantInfo extends IBase {
 	nnp: string
 	adr: string
 	prntBIC: number
-	dateInParticipant: string
-	dateOutParticipant: string
+	dateIn: string
+	dateOut: string
 	ptType: string
 	srvcs: string
+	xchType: string
 	uid: number
 	participantStatus: ParticipantStatus
-	bicParticipantInfoId: number
+	bicDirectoryEntry: number
 	rstrLists: number[]
 }

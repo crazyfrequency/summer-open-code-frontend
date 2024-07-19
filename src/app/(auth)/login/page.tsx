@@ -37,7 +37,6 @@ export default function SignIn() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
     let response = await authService.login(values.username, values.password);
 
     let status = checkErrorMessage(response);

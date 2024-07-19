@@ -3,18 +3,17 @@
 import DataTable from "@/components/data-table";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { columnsImportData } from "@/constants/import-data.constants";
 import { ADMIN_PAGES } from "@/constants/pages.constants";
-import { useImportData } from "@/hooks/useImportData";
 import { cn } from "@/lib/utils";
 import { Plus, RefreshCcw, Search } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
 import Data from "@/components/data";
 import { TPaginationSearch } from "@/types/root.types";
+import { useBicDirectoryEntryByImportData } from "@/hooks/useBicDirectoryEntry";
+import { columnsBicDirectoryEntry } from "@/constants/bic-directory-entry.constants";
 
 export default function Home() {
-  const {data, update, isLoading, pagination, setPage, query, setQuery} = useImportData();
+  const {data, update, isLoading, pagination, setPage, query, setQuery} = useBicDirectoryEntryByImportData();
 
   return (
     <div className="w-full">
@@ -35,14 +34,14 @@ export default function Home() {
           size="icon"
           asChild
         >
-          <Link href={ADMIN_PAGES.CREATE_IMPORT_DATA}>
+          <Link href={ADMIN_PAGES.CREATE_BIC_DIRECTORY_ENTRY}>
             <Plus />
           </Link>
         </Button>
       </div>
       <div className="w-full my-6">
         <Data
-          columns={columnsImportData}
+          columns={columnsBicDirectoryEntry}
           data={data}
           isLoading={isLoading}
           pagination={pagination}

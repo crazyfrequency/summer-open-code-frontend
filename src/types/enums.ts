@@ -1,54 +1,54 @@
 export enum AccountStatus {
-	ACAC,
-    ACDL
+	ACAC="ACAC",
+    ACDL="ACDL",
 }
 
 export enum AccRstr {
-    LMRS,
-    URRS,
-    CLRS,
-    FPRS,
-    SDRS,
+    LMRS="LMRS",
+    URRS="URRS",
+    CLRS="CLRS",
+    FPRS="FPRS",
+    SDRS="SDRS",
 }
 
 export enum ChangeType {
-    ADDD,
-    CHGD,
-    DLTD
+    ADDD="ADDD",
+    CHGD="CHGD",
+    DLTD="DLTD",
 }
 
 export enum CreationReason {
-    RQST,
-    CIBD,
-    FCBD
+    RQST="RQST",
+    CIBD="CIBD",
+    FCBD="FCBD",
 }
 
 export enum InfoTypeCode {
-    FIRR,
-    SIRR
+    FIRR="FIRR",
+    SIRR="SIRR",
 }
 
 export enum ParticipantStatus {
-    PSAC,
-    PSDL
+    PSAC="PSAC",
+    PSDL="PSDL",
 }
 
 export enum RegulationAccountType {
-    CBRA,
-    CRSA,
-    BANA,
-    TRSA,
-    TRUA,
-    CLAC,
-    UTRA
+    CBRA="CBRA",
+    CRSA="CRSA",
+    BANA="BANA",
+    TRSA="TRSA",
+    TRUA="TRUA",
+    CLAC="CLAC",
+    UTRA="UTRA",
 }
 
 export enum Rstr {
-    URRS,
-    LWRS,
-    MRTR,
-    RSIP,
-    FPIP
+    URRS="URRS",
+    LWRS="LWRS",
+    MRTR="MRTR",
+    RSIP="RSIP",
+    FPIP="FPIP",
 }
 
 export enum Role {

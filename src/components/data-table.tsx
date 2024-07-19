@@ -1,17 +1,18 @@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { TPagination } from "@/types/root.types";
 import { ColumnDef, flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
 
-interface DataTableProps<TData, TValue> {
+interface IDataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
-  data: TData[]
+  data: TPagination<TData> | null
 }
 
 export default function DataTable<TData, TValue>({
   columns,
   data,
-}: DataTableProps<TData, TValue>) {
+}: IDataTableProps<TData, TValue>) {
   const table = useReactTable({
-    data,
+    data: data?.content ?? [],
     columns,
     getCoreRowModel: getCoreRowModel(),
   })
@@ -21,7 +22,8 @@ export default function DataTable<TData, TValue>({
         {table.getHeaderGroups().map((headerGroup) => (
           <TableRow key={headerGroup.id}>
             {headerGroup.headers.map((header) => {
-              return (
+              let list = [];
+              list.push(
                 <TableHead key={header.id}>
                   {header.isPlaceholder
                     ? null
@@ -31,6 +33,14 @@ export default function DataTable<TData, TValue>({
                       )}
                 </TableHead>
               )
+              for (let i = 1; i < header.subHeaders.length; i++) {
+                list.push(
+                  <TableHead key={header.subHeaders[i].id}>
+                    {null}
+                  </TableHead>
+                )
+              }
+              return list
             })}
           </TableRow>
         ))}
