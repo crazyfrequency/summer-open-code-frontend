@@ -56,10 +56,9 @@ export function useBicDirectoryEntry() {
   return {data, isLoading, pagination, setPage: setPagination, query, setQuery, update}
 }
 
-export function useBicDirectoryEntryByImportData() {
+export function useBicDirectoryEntryByImportData(id: string) {
 	const router = useRouter();
 	const path = usePathname();
-  const { id } = useParams();
 	const params = useSearchParams();
   let [data, setData] = useState<TResponse<IBicDirectoryEntry>>(null);
   let [isLoading, setLoading] = useState(true);
@@ -68,7 +67,7 @@ export function useBicDirectoryEntryByImportData() {
 
   const update = async () => {
     setLoading(true);
-    let response = await BicDirectoryEntryService.getBicDirectoryEntryByImportDataId(parseInt(id as string), pagination, query);
+    let response = await BicDirectoryEntryService.getBicDirectoryEntryByImportDataId(parseInt(id), pagination, query);
     setLoading(false);
     let status = checkErrorMessage(response);
     if (!status.ok) {
