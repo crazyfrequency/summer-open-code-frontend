@@ -29,7 +29,7 @@ COPY postcss.config.mjs .
 # ENV NEXT_TELEMETRY_DISABLED 1
 
 # Build Next.js based on the preferred package manager
-RUN \
+CMD \
   if [ -f yarn.lock ]; then yarn dev; \
   elif [ -f package-lock.json ]; then npm run dev; \
   elif [ -f pnpm-lock.yaml ]; then pnpm dev; \
